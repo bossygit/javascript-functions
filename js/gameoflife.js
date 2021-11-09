@@ -13,7 +13,32 @@ function same([x, y], [j, k]) {
 }
 
 // The game state to search for `cell` is passed as the `this` value of the function.
-function contains(cell) { }
+function contains(cell) { 
+
+  let retour = false;
+  let table = {
+                gameState: [[1,2],[3,4],[8,8],[3,6],[4,1],[7,2]],
+                ctn: function(){
+                
+                for(i = 0; i < this.gameState.length; i++){
+                
+                            if (this.gameState[i][0] == cell[0] && this.gameState[i][1] == cell[1]  ) {
+                            
+                                   retour = true;
+                            
+                            }
+                            
+                
+                }
+                
+                
+                }
+  
+  }
+  table.ctn();
+  return retour; 
+
+}
 
 const printCell = (cell, state) => { };
 
