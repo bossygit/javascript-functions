@@ -19,7 +19,11 @@ return this.some((c) => same(c,cell));
 
 }
 
-const printCell = (cell, state) => { };
+const printCell = (cell, state) => {
+  if (contains.call(cell,state)) return '\u25A3';
+
+  else return '\u25A2';
+ };
 
 const corners = (state = []) => { };
 
