@@ -20,7 +20,7 @@ return this.some((c) => same(c,cell));
 }
 
 const printCell = (cell, state) => {
-  if (contains.call(cell,state)) return '\u25A3';
+  if (contains.call(state,cell)) return '\u25A3';
 
   else return '\u25A2';
  };
