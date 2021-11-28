@@ -25,7 +25,33 @@ const printCell = (cell, state) => {
   else return '\u25A2';
  };
 
-const corners = (state = []) => { };
+const corners = (state = []) => { 
+let corner = {
+topRight: [0,0],
+bottomLeft: [0,0]
+};
+
+if (state.length === 0) { 
+console.log("Array is empty!");
+return corner;
+}
+
+let y = [];
+let x = [];
+state.forEach((h) => {y.push(h[1])});
+state.forEach((h) => {x.push(h[0])});
+
+y.sort();
+x.sort();
+let highestY = y.pop();
+let lowestX = x.shift();
+
+let lowestY = y.shift();
+let highestX = x.pop();
+
+corner.topRight = [highestX,highestY];
+corner.bottomLeft = [lowestX,lowestY];
+};
 
 const printCells = (state) => { };
 
