@@ -51,6 +51,8 @@ let highestX = x.pop();
 
 corner.topRight = [highestX,highestY];
 corner.bottomLeft = [lowestX,lowestY];
+  
+ return corner; 
 };
 
 const printCells = (state) => { };
