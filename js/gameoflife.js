@@ -13,49 +13,71 @@ function same([x, y], [j, k]) {
 }
 
 // The game state to search for `cell` is passed as the `this` value of the function.
-function contains(cell) { 
+function contains(cell) {
 
-return this.some((c) => same(c,cell));
+  return this.some((c) => same(c, cell));
 
 }
 
 const printCell = (cell, state) => {
-  if (contains.call(state,cell)) return '\u25A3';
+  if (contains.call(state, cell)) return '\u25A3';
 
   else return '\u25A2';
- };
-
-const corners = (state = []) => { 
-let corner = {
-topRight: [0,0],
-bottomLeft: [0,0]
 };
 
-if (state.length === 0) { 
-console.log("Array is empty!");
-return corner;
-}
+const corners = (state = []) => {
+  let corner = {
+    topRight: [0, 0],
+    bottomLeft: [0, 0]
+  };
 
-let y = [];
-let x = [];
-state.forEach((h) => {y.push(h[1])});
-state.forEach((h) => {x.push(h[0])});
+  if (state.length === 0) {
 
-y.sort();
-x.sort();
-let highestY = y.pop();
-let lowestX = x.shift();
+    return corner;
+  }
 
-let lowestY = y.shift();
-let highestX = x.pop();
+  let y = [];
+  let x = [];
+  state.forEach((h) => { y.push(h[1]) });
+  state.forEach((h) => { x.push(h[0]) });
 
-corner.topRight = [highestX,highestY];
-corner.bottomLeft = [lowestX,lowestY];
-  
- return corner; 
+  y.sort();
+  x.sort();
+  let highestY = y.pop();
+  let lowestX = x.shift();
+
+  let lowestY = y.shift();
+  let highestX = x.pop();
+
+  corner.topRight = [highestX, highestY];
+  corner.bottomLeft = [lowestX, lowestY];
+
+  return corner;
 };
 
-const printCells = (state) => { };
+const printCells = (state) => {
+
+  let corner = corners(state);
+  let ground = "";
+
+  for (let i = 0; i < corner.topRight[0]; i++) {
+
+    for (let a = 0; a < corner.topRight[1]; a++) {
+
+      ground += printCell([a, i], state);
+
+
+    }
+    ground += '\n';
+
+  }
+
+  return ground;
+
+
+
+
+};
 
 const getNeighborsOf = ([x, y]) => { };
 
