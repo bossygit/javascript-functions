@@ -59,20 +59,16 @@ const printCells = (state) => {
 
   let corner = corners(state);
   let ground =[];
-  let boucle = corner.topRight[0] - corner.bottomLeft[0];
-  let line = corner.topRight[1] - corner.bottomLeft[1];
 
-  for (let i = corner.topRight[0]; i >= corner.bottomLeft[0] ; i--) {
 
-    for (let a = corner.bottomLeft[1]; a <= corner.topRight[1]; a++) {
-      ground += printCell([a, i], state);
-      
-     
+  for (let y = corner.topRight[0]; y >= corner.bottomLeft[0] ; y--) {
 
+    for (let x = corner.bottomLeft[1]; x <= corner.topRight[1]; x++) {
+      ground += printCell([x, y], state);
 
     }
 
-    ground += '\n';
+    ground += '\n'; 
    
 
   }
@@ -84,7 +80,13 @@ const printCells = (state) => {
 
 };
 
-const getNeighborsOf = ([x, y]) => { };
+const getNeighborsOf = ([x, y]) => {
+  return [
+    [x-1,y+1],[x,y+1],[x+1,y+1],
+    [x-1,y],   [x+1,y],
+    [x-1,y-1],[x,y-1],[x+1,y-1]
+  ];
+ };
 
 const getLivingNeighbors = (cell, state) => { };
 
