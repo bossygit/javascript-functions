@@ -58,17 +58,22 @@ const corners = (state = []) => {
 const printCells = (state) => {
 
   let corner = corners(state);
-  let ground = "";
+  let ground =[];
+  let boucle = corner.topRight[0] - corner.bottomLeft[0];
+  let line = corner.topRight[1] - corner.bottomLeft[1];
 
-  for (let i = 0; i < corner.topRight[0]; i++) {
+  for (let i = corner.topRight[0]; i >= corner.bottomLeft[0] ; i--) {
 
-    for (let a = 0; a < corner.topRight[1]; a++) {
-
+    for (let a = corner.bottomLeft[1]; a <= corner.topRight[1]; a++) {
       ground += printCell([a, i], state);
+      
+     
 
 
     }
+
     ground += '\n';
+   
 
   }
 
