@@ -57,13 +57,13 @@ const corners = (state = []) => {
 
 const printCells = (state) => {
 
-  let corner = corners(state);
+  let { topRight , bottomLeft } = corners(state);
   let ground =[];
 
 
-  for (let y = corner.topRight[0]; y >= corner.bottomLeft[0] ; y--) {
+  for (let y = topRight[0]; y >= bottomLeft[0] ; y--) {
 
-    for (let x = corner.bottomLeft[1]; x <= corner.topRight[1]; x++) {
+    for (let x = bottomLeft[1]; x <= topRight[1]; x++) {
       ground += printCell([x, y], state);
 
     }
