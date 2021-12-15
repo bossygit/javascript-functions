@@ -57,19 +57,19 @@ const corners = (state = []) => {
 
 const printCells = (state) => {
 
-  let { topRight , bottomLeft } = corners(state);
-  let ground =[];
+  let { topRight, bottomLeft } = corners(state);
+  let ground = [];
 
 
-  for (let y = topRight[0]; y >= bottomLeft[0] ; y--) {
+  for (let y = topRight[0]; y >= bottomLeft[0]; y--) {
 
     for (let x = bottomLeft[1]; x <= topRight[1]; x++) {
       ground += printCell([x, y], state);
 
     }
 
-    ground += '\n'; 
-   
+    ground += '\n';
+
 
   }
 
@@ -82,13 +82,21 @@ const printCells = (state) => {
 
 const getNeighborsOf = ([x, y]) => {
   return [
-    [x-1,y+1],[x,y+1],[x+1,y+1],
-    [x-1,y],   [x+1,y],
-    [x-1,y-1],[x,y-1],[x+1,y-1]
+    [x - 1, y + 1], [x, y + 1], [x + 1, y + 1],
+    [x - 1, y], [x + 1, y],
+    [x - 1, y - 1], [x, y - 1], [x + 1, y - 1]
   ];
- };
+};
 
-const getLivingNeighbors = (cell, state) => { };
+const getLivingNeighbors = (cell, state) => {
+
+  let livingNeighbors = getNeighborsOf(cell).filter(neighbor => {
+    if (contains.bind(state, neighbor)) return true;
+  })
+
+  return livingNeighbors;
+
+};
 
 const willBeAlive = (cell, state) => { };
 
