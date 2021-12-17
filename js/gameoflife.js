@@ -89,9 +89,10 @@ const getNeighborsOf = ([x, y]) => {
 };
 
 const getLivingNeighbors = (cell, state) => {
+  let newContains = contains.bind(state);
 
   let livingNeighbors = getNeighborsOf(cell).filter(neighbor => {
-    if (contains.bind(state, neighbor)) return true;
+    return newContains(neighbor);
   })
 
   return livingNeighbors;
