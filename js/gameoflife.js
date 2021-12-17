@@ -58,22 +58,25 @@ const corners = (state = []) => {
 const printCells = (state) => {
 
   let { topRight, bottomLeft } = corners(state);
+  let accumulator = "";
   let ground = [];
 
 
   for (let y = topRight[0]; y >= bottomLeft[0]; y--) {
+    let row = [];
 
     for (let x = bottomLeft[1]; x <= topRight[1]; x++) {
-      ground += printCell([x, y], state);
+      row.push(printCell([x, y], state));
+      
 
     }
 
-    ground += '\n';
+    accumulator += row.join(" ") + "\n";
 
 
   }
 
-  return ground;
+  return accumulator;
 
 
 
