@@ -108,7 +108,7 @@ const willBeAlive = (cell, state) => {
     return contains.bind(state,neighbor);
   });
 
-  if(livingNeighbors.length >= 3 || (contains.bind(state,cell) && livingNeighbors.length >= 2)) {
+  if(livingNeighbors.length === 3 || (contains.bind(state,cell) && livingNeighbors.length === 2)) {
    return true;
   }
 
