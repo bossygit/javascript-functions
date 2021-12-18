@@ -105,10 +105,10 @@ const getLivingNeighbors = (cell, state) => {
 const willBeAlive = (cell, state) => { 
   let neighbors = getNeighborsOf(cell);
   let livingNeighbors = neighbors.filter(neighbor => {
-    return contains.bind(state,neighbor);
+    return contains.call(state,neighbor);
   });
 
-  if(livingNeighbors.length === 3 || (contains.bind(state,cell) && livingNeighbors.length === 2)) {
+  if(livingNeighbors.length === 3 || (contains.call(state,cell) && livingNeighbors.length === 2)) {
    return true;
   }
 
