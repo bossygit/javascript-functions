@@ -102,7 +102,24 @@ const getLivingNeighbors = (cell, state) => {
 
 };
 
-const willBeAlive = (cell, state) => { };
+const willBeAlive = (cell, state) => { 
+  let neighbors = getNeighborsOf(cell);
+  let livingNeighbors = neighbors.filter(neighbor => {
+    return contains.bind(state,neighbor);
+  });
+
+  if(livingNeighbors.length >= 3 || (contains.bind(state,cell) && livingNeighbors.length >= 2)) {
+   return true;
+  }
+
+  else return false;
+
+  /*
+  the cell has three living neighbors, or,
+the cell is currently alive and has two living neighbors
+  */
+
+};
 
 const calculateNext = (state) => { };
 
