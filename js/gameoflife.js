@@ -62,10 +62,10 @@ const printCells = (state) => {
   let ground = [];
 
 
-  for (let y = topRight[0]; y >= bottomLeft[0]; y--) {
+  for (let y = topRight[1]; y >= bottomLeft[1]; y--) {
     let row = [];
 
-    for (let x = bottomLeft[1]; x <= topRight[1]; x++) {
+    for (let x = bottomLeft[0]; x <= topRight[0]; x++) {
       row.push(printCell([x, y], state));
       
 
@@ -76,7 +76,6 @@ const printCells = (state) => {
 
   }
 
-  console.log(accumulator);
   return accumulator;
 
 
