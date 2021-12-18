@@ -76,7 +76,7 @@ const printCells = (state) => {
 
   }
 
-  return accumulator;
+  console.log(accumulator);
 
 
 
