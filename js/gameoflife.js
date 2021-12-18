@@ -114,14 +114,26 @@ const willBeAlive = (cell, state) => {
 
   else return false;
 
-  /*
-  the cell has three living neighbors, or,
-the cell is currently alive and has two living neighbors
-  */
-
 };
 
-const calculateNext = (state) => { };
+const calculateNext = (state) => {
+ 
+  const { topRight, bottomLeft } = corners(state);
+
+  let result = [];
+
+
+  for(let y = topRight[1] + 1; y >= bottomLeft[1] - 1;y--) {
+      for( let x = bottomLeft[0] - 1;x <= topRight[0] + 1;x++) {
+        if (willBeAlive([x,y],state)){
+            result.push([x,y]);
+        }
+      }
+  }
+
+  return result;
+
+ };
 
 const iterate = (state, iterations) => { };
 
