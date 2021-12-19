@@ -137,9 +137,9 @@ const calculateNext = (state) => {
 
 const iterate = (state, iterations) => { 
 
-  let states = [];
+  let states = [state];
 
-  for(let i = 0; i <= iterations; i++){
+  for(let i = 0; i < iterations; i++){
     state = calculateNext(state);
     states.push(state); 
    
