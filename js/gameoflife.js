@@ -135,7 +135,20 @@ const calculateNext = (state) => {
 
  };
 
-const iterate = (state, iterations) => { };
+const iterate = (state, iterations) => { 
+
+  let states = [];
+
+  for(let i = 0; i <= iterations; i++){
+    state = calculateNext(state);
+    states.push(state); 
+   
+
+  }
+
+  return states;
+
+ };
 
 const main = (pattern, iterations) => { };
 
